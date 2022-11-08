@@ -12,17 +12,25 @@
 <body>
     <?php
     require '../../util/base_de_datos.php';
+    $error = "";
+    $correcta = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nombre = $_POST["nombre"];
         $talla = $_POST["talla"];
         $precio = $_POST["precio"];
-        $categoria = $_POST["categoria"];
+        if(isset($_POST["categoria"])){
+            $categoria = $_POST["categoria"];
+        }else{
+            $categoria = "";
+        }
 
-        $error = " ";
-        $correcta = " ";
-        if (!empty($nombre) && !empty($talla) && !empty($precio) && !empty($categoria)) {
-            $sql = "INSERT INTO prendas (nombre, talla, precio, categoria) VALUES ('$nombre', '$talla', '$precio' , '$categoria')";
-
+        
+        if (!empty($nombre) && !empty($talla) && !empty($precio)) {
+            if(!empty($categoria)){
+                $sql = "INSERT INTO prendas (nombre, talla, precio, categoria) VALUES ('$nombre', '$talla', '$precio' , '$categoria')";
+            }else{
+                $sql = "INSERT INTO prendas (nombre, talla, precio) VALUES ('$nombre', '$talla', '$precio')";
+            }
 
             if ($conexion->query($sql) == "TRUE") {
                 $correcta = "PRENDA DE ROPA INSERTADA CORRECTAMENTE";
@@ -35,10 +43,26 @@
     }
     ?>
     <div class="container">
+    <?php require '../header.php'?>
         <h1>Nueva Prenda</h1>
+        <a class ="btn btn-primary" href="index.php" style="margin:30px">Ver listado</a>
 
         <div class="row">
-            <div class="col-6">
+            <div class="col-6">                
+                <?php if ($error != "") { ?>
+                    
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <?php echo $error?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php } ?>
+                <?php if ($correcta != "") { ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?php echo $correcta ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+                    </div>
+                <?php } ?>
                 <form method="POST">
                     <label class="form-label">Nombre</label>
                     <input class="form-control" type="text" name="nombre">
@@ -53,10 +77,9 @@
                         <option value="XL">XL</option>
                     </select>
                     <br>
-                    <label class="form-label
                     <label class="form-label">Categoria</label>
                     <select name ="categoria" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                        <option selected>Seleccione su categoria</option>
+                        <option value="" selected disabled hidden>Seleccione su categoria</option>
                         <option value="Pantalones">Pantalones</option>
                         <option value="Camisetas">Camiseta</option>
                         <option value="Accesorios">Accesorio</option>
@@ -70,18 +93,17 @@
 
 
                     <button class="btn btn-primary" type="submit">Crear</button>
-                    <a class="btn btn-secondary" href="index.php">listado de ropa</a>
-                </form>
-                <h3 style="color:lightgreen"><?php
-                if (!empty($correcta)) {
-                    echo $correcta;
-                } ?>
-                </h3>
 
-                <h3 style="color:red"><?php if (!empty($error)) {
-                    echo $error;
+                </form>
+                
+                <?php
+                if (!empty($correcta)) {
+                    $correcta ="Prenda insertada correctamente";
+
+
+                } else {
+                    $error = "No se ha podido insertar la prenda";
                 } ?>
-                </h3>
             </div>
         </div>
     </div>
