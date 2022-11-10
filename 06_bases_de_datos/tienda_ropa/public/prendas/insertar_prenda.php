@@ -23,15 +23,33 @@
         }else{
             $categoria = "";
         }
+        //localizamos el campo imagen del formulario por su nombre "imagen" y obtenemos el nombre del archivo (imagen.jpg)
+        $file_name = $_FILES["imagen"]["name"];
+        //donde se almacena temporalmente
+        $file_temp_name = $_FILES["imagen"]["tmp_name"];
+        $path = "../../resources/images/prendas/" . $file_name;
+
+        
+
+
 
         
         if (!empty($nombre) && !empty($talla) && !empty($precio)) {
-            if(!empty($categoria)){
-                $sql = "INSERT INTO prendas (nombre, talla, precio, categoria) VALUES ('$nombre', '$talla', '$precio' , '$categoria')";
+            //Subimos la imagen a la carpeta deseada
+            if(move_uploaded_file($file_temp_name, $path)){
+                echo "<p>Fichero movido con exito</p>";
             }else{
-                $sql = "INSERT INTO prendas (nombre, talla, precio) VALUES ('$nombre', '$talla', '$precio')";
+                echo "<p>No se ha podido mover el fichero</p>";
+            }
+            //Insertamos la prenda en la bbdd completa o sin categoria
+            $imagen = "/resources/images/prendas/" . $file_name;
+            if(!empty($categoria)){
+                $sql = "INSERT INTO prendas (nombre, talla, precio, categoria, imagen) VALUES ('$nombre', '$talla', '$precio' , '$categoria','$imagen')";
+            }else{
+                $sql = "INSERT INTO prendas (nombre, talla, precio, imagen) VALUES ('$nombre', '$talla', '$precio', '$imagen')";
             }
 
+            //comprobar que se ha insertado todo correctamente
             if ($conexion->query($sql) == "TRUE") {
                 $correcta = "PRENDA DE ROPA INSERTADA CORRECTAMENTE";
             } else {
@@ -63,7 +81,7 @@
 
                     </div>
                 <?php } ?>
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     <label class="form-label">Nombre</label>
                     <input class="form-control" type="text" name="nombre">
                     <br>
@@ -85,12 +103,12 @@
                         <option value="Accesorios">Accesorio</option>
                     </select>
                     <br>
-
                     <label class="form-label">Precio</label>
                     <input class="form-control" type="text" name="precio">
                     <br>
-                    <!-- boton visible si completas todo el formulario -->
-
+                    <label class="form-label">Imagen</label>
+                    <input class="form-control" type="file" name="imagen">
+                    <br>
 
                     <button class="btn btn-primary" type="submit">Crear</button>
 
