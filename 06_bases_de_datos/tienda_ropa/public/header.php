@@ -26,15 +26,17 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/tienda_ropa/public/prendas/insertar_prenda.php">Nueva prenda</a>
                         </li>
-<!--                         <li class="nav-item">
-                            <a class="nav-link" href="/tienda_ropa/public/prendas/index.php">Listar prendas</a>
-                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link" href="/tienda_ropa/public/clientes/insertar_cliente.php">Crear cliente</a>
                         </li>
-<!--                         <li class="nav-item">
-                            <a class="nav-link" href="/tienda_ropa/public/clientes/index.php">Listado de clientes</a>
-                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/tienda_ropa/public/compras/index.php">Compras</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/tienda_ropa/public/compras/">Nueva Compra</a>
+                        </li>
+
+
 
                     </ul>
                 </div>

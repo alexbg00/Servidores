@@ -71,11 +71,28 @@
                     if($resultado->num_rows > 0){
                         while($fila = $resultado->fetch_assoc()){?>
                             <tr>
-                                <td><?php echo $fila["usuario"] ?></td>
+                                <td>
+                                    <?php echo $fila["usuario"]; 
+                                    if($fila["usuario"] == "admin"){ 
+                                        ?>
+                                        <span class="badge text-bg-danger">ADMINISTRADOR</span>
+                                        <!--  -->
+                                    <?php
+                                    }
+                                    /*mostrar en rojo si es menor a 1990  */
+                                    if($fila["fecha_nacimiento"] >= date("Y-m-d", strtotime("10-11-2004"))){
+                                        ?>
+                                        <span class="badge text-bg-warning">MENOR DE EDAD</span>
+                                        <?php
+                                    }
+                                    ?>
+                                </td>
                                 <td><?php echo $fila["nombre"] ?></td>
                                 <td><?php echo $fila["apellido_1"] ?></td>
-                                <td><?php echo $fila["apellido_1"] ?></td>
-                                <td><?php echo $fila["fecha_nacimiento"] ?></td>
+                                <td><?php echo $fila["apellido_2"] ?></td>
+                                <!-- Setter fecha de nacimiento dd/mm/yyyy -->
+                                <td><?php echo date("d/m/Y", strtotime($fila["fecha_nacimiento"])) ?></td>
+                                    
                                 <!-- mostrar avatar -->
                                 <td><img src="../..<?php echo $fila["imagen"] ?>" alt="avatar" width="70px" height="70px" style="border-radius:150px"></td>
                                 <td>
@@ -95,6 +112,8 @@
                         }
                     }
                     
+                    
+
                 ?>
                 
                 </tbody>
