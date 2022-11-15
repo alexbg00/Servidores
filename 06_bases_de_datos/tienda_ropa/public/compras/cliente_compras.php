@@ -20,6 +20,7 @@
         $usuario = $_GET['usuario'];
     }
     ?>
+    
     <div class="container">
     <h1>Compras de <?php echo $usuario ?></h1>
     <div class="row">

@@ -10,6 +10,8 @@
 </head>
 
 <body>
+
+
     <div class="container">
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -30,11 +32,15 @@
                             <a class="nav-link" href="/tienda_ropa/public/clientes/insertar_cliente.php">Crear cliente</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/tienda_ropa/public/compras/index.php">Compras</a>
+                            <a class="nav-link" href="/tienda_ropa/public/compras/">Compras</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/tienda_ropa/public/compras/">Nueva Compra</a>
+                            <a class="nav-link" href="/tienda_ropa/public/compras/cliente_compras.php">Nueva Compra</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/tienda_ropa/public/compras/comprar_prendas.php">Comprar prenda</a>
+                        </li>
+
 
 
 

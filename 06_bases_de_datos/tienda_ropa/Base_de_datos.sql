@@ -17,13 +17,11 @@ ALTER TABLE cliente
 DESCRIBE PRENDAS;
 
 CREATE TABLE clientes_prendas(
+	id INT PRIMARY KEY AUTO_INCREMENT,
 	cliente_id INT,
     prenda_id INT,
     cantidad INT,
     fecha DATE,
-    
-    CONSTRAINT clientes_prendas_pk 
-		PRIMARY KEY (cliente_id,prenda_id),
         
 	CONSTRAINT clientes_prendas_cliente_fk
 		FOREIGN KEY (cliente_id)
@@ -59,3 +57,8 @@ SELECT * FROM vw_clientes_prendas;
 
 ALTER TABLE clientes_prendas
 	ADD COLUMN talla VARCHAR(10);
+    
+SELECT * FROM clientes_prendas;
+
+
+
