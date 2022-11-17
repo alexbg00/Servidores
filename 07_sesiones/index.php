@@ -18,12 +18,18 @@
 
             <?php
             session_start();
-            if(!isset($_SESSION["usuario"])){
-                header("location:login.php");
+            if(isset($_SESSION["usuario"]) && $_SESSION["rol"] == "administrador"){
+                
+                    echo "<p>Has iniciado con: " . $_SESSION["usuario"] . " como administrador</p>";
+            
+            }if(isset($_SESSION["usuario"]) && $_SESSION["rol"] == "usuario"){
+                    echo "<p>Has iniciado con: " . $_SESSION["usuario"] . " como usuario</p>";
             }else{
-                echo "<p>Has iniciado con: " . $_SESSION["usuario"] . "</p>";
+                header("location:login.php");
             }
             ?>
+
+
         </div>
         <a class="btn btn-primary" href="desconectar.php">Cerrar Sesion</a>
     </div>

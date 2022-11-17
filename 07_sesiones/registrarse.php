@@ -14,27 +14,28 @@
 
 <body>
     <?php require "./util/base_de_datos.php" ?>
-        <?php
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $usuario = $_POST["usuario"];
-            $contrasena = $_POST["contrasena"];
-            $nombre = $_POST["nombre"];
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $usuario = $_POST["usuario"];
+        $contrasena = $_POST["contrasena"];
+        $nombre = $_POST["nombre"];
+        $rol=$_POST["rol"];
 
-            //encriptar la contraseña
-            $hash_contrasena = password_hash($contrasena, PASSWORD_DEFAULT);
+        //encriptar la contraseña
+        $hash_contrasena = password_hash($contrasena, PASSWORD_DEFAULT);
 
 
-            echo $usuario . " " . $contrasena . " " . $nombre . " " . $hash_contrasena . "<br>";
+        echo $usuario . " " . $contrasena . " " . $nombre . " " . $hash_contrasena . "<br>";
 
-            $sql = "INSERT INTO usuarios (usuario, contrasena, nombre) VALUES ('$usuario', '$hash_contrasena', '$nombre')";
+        $sql = "INSERT INTO usuarios (usuario, contrasena, nombre, rol) VALUES ('$usuario', '$hash_contrasena', '$nombre' , '$rol')";
 
-            if($conexion->query($sql) === TRUE){
-                header("Location: login.php");
-            }else{
-                echo "Error al registrar usuario";
-            }
+        if ($conexion->query($sql) === TRUE) {
+            header("Location: login.php");
+        } else {
+            echo "Error al registrar usuario";
         }
-        ?>
+    }
+    ?>
 
 
     <div class="container">
@@ -43,11 +44,11 @@
             <div class="col-6">
                 <form action="" method="post">
                     <div class="form-group mb-3">
-                        <label class="form-label" >Usuario</label>
+                        <label class="form-label">Usuario</label>
                         <input type="text" class="form-control" name="usuario" type="text" placeholder="Usuario">
                     </div>
                     <div class="form-group mb-3">
-                        <label class="form-label" >Contraseña</label>
+                        <label class="form-label">Contraseña</label>
                         <input class="form-control" name="contrasena" type="password" placeholder="Contraseña">
                     </div>
                     <div class="form-group mb-3">
@@ -55,12 +56,20 @@
                         <input class="form-control" name="nombre" type="text" placeholder="Nombre">
                     </div>
                     <div class="form-group mb-3">
+                        <label class="form-label">Tipo de usuario</label>
+                        <select class="form-select" name="rol" aria-label="Default select example">
+                            <option value="usuario" selected>usuario</option>
+                            <option value="administrador">administrador</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group mb-3">
                         <button class="btn btn-primary" type="submit">Registrarse</button>
                     </div>
-                    </div>
-                </form>
             </div>
+            </form>
         </div>
+    </div>
     </div>
 
 

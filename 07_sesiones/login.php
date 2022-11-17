@@ -25,13 +25,16 @@
         if($resultado -> num_rows > 0){
             while($fila = $resultado -> fetch_assoc()){
                 $hash_contrasena = $fila["contrasena"];
+                $rol = $fila["rol"];
             }
             $acceso_valido = password_verify($contrasena, $hash_contrasena); //true o false
             if($acceso_valido){
-                header("Location: index.php");
                 
                 session_start();
                 $_SESSION["usuario"] = $usuario;
+                $_SESSION["rol"] = $rol;
+
+                header("Location: index.php");
             }else{
                 echo "contraseña incorrecto";
             }
@@ -56,6 +59,7 @@
 
                     <div class="form-group mb-3">
                         <button class="btn btn-primary mt-3" type="submit">Iniciar Sesion</button>
+                        <a class="btn btn-primary mt-3" href="registrarse.php">registrarse</a>
                     </div>
                     </div>
                 </form>

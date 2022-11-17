@@ -14,7 +14,6 @@
 
 <body>
     <div class="container">
-        <?php require '../header.php'; ?>
         <?php require "../../util/base_de_datos.php" ?>
 
         <?php
@@ -77,7 +76,7 @@
                 }
             } else {
                 /* meter una imagen por defecto si el campo imagen esta vacio */
-                $avatar = "/resources/images/clientes/552721.png";
+                $avatar = "/resources/images/clientes/552721.jpg";
 
                 $segundo_apellido =
                     !empty($segundo_apellido) ? "'$segundo_apellido'" : "NULL";
@@ -108,7 +107,7 @@
         ?>
 
         <h1>Registrate!</h1>
-        <a href="index.php" class="btn btn-primary" style="margin:30px">Listado clientes</a>
+        <a href="index.php" class="btn btn-primary disabled" style="margin:30px" >Listado clientes</a>
         <form action="registro.php" method="POST" class="form-control mt-1" enctype="multipart/form-data">
             <label for="usuario">Usuario</label>
             <input type="text" name="usuario" id="usuario" class="form-control">

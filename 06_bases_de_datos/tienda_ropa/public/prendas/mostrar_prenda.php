@@ -11,6 +11,8 @@
     <div class="container">
         <?php require '../../util/base_de_datos.php' ?>
         <?php require '../header.php' ?>
+        <?php require "../sesion/control_de_acceso.php" ?>
+
 
         <h1>Ver prenda</h1>
         <?php

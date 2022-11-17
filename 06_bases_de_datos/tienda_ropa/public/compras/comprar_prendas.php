@@ -15,15 +15,8 @@
 <body>
     <?php require "../header.php"; ?>
     <?php require "../../util/base_de_datos.php"; ?>
+    <?php require "../sesion/control_de_acceso.php" ?>
 
-    <?php
-            session_start();
-            if(!isset($_SESSION["usuario"])){
-                header("location:clientes/login.php");
-            }else{
-                echo "<p>Has iniciado con: " . $_SESSION["usuario"] . "</p>";
-            }
-            ?>
 
     <div class="container">
         <h1>Comprar prenda</h1>
