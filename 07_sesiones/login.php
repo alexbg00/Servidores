@@ -28,7 +28,10 @@
             }
             $acceso_valido = password_verify($contrasena, $hash_contrasena); //true o false
             if($acceso_valido){
-                echo "Acceso correcto";
+                header("Location: index.php");
+                
+                session_start();
+                $_SESSION["usuario"] = $usuario;
             }else{
                 echo "contraseña incorrecto";
             }

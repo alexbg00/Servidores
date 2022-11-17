@@ -12,6 +12,15 @@
         <?php require '../header.php' ?>
 
         <?php
+            session_start();
+            if(!isset($_SESSION["usuario"])){
+                header("location:login.php");
+            }else{
+                echo "<p>Has iniciado con: " . $_SESSION["usuario"] . "</p>";
+            }
+            ?>
+
+        <?php
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $id = $_GET["id"];
             

@@ -10,10 +10,8 @@
 </head>
 
 <body>
-
-
+    
     <div class="container">
-
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Tienda de ropa</a>
@@ -40,6 +38,16 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/tienda_ropa/public/compras/comprar_prendas.php">Comprar prenda</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/tienda_ropa/public/clientes/registro.php">Registrarse</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/tienda_ropa/public/clientes/login.php">Iniciar Sesion</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/tienda_ropa/public/clientes/cerrar_sesion.php">Desconectar</a>
+                        </li>
+
 
 
 

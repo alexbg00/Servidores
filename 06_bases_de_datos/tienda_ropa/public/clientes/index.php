@@ -10,6 +10,15 @@
     <?php require '../header.php'?>
     <?php require "../../util/base_de_datos.php" ?>
 
+    <?php
+            session_start();
+            if(!isset($_SESSION["usuario"])){
+                header("location:login.php");
+            }else{
+                echo "<p>Has iniciado con: " . $_SESSION["usuario"] . "</p>";
+            }
+            ?>
+
 
     <div class ="container">
     <h1>Listado de clientes</h1>

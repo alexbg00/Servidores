@@ -29,11 +29,10 @@
             $sql = "INSERT INTO usuarios (usuario, contrasena, nombre) VALUES ('$usuario', '$hash_contrasena', '$nombre')";
 
             if($conexion->query($sql) === TRUE){
-                echo "Usuario registrado correctamente";
+                header("Location: login.php");
             }else{
                 echo "Error al registrar usuario";
             }
-
         }
         ?>
 

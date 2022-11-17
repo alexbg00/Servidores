@@ -11,6 +11,17 @@
     <?php
         require '../../util/base_de_datos.php';
 
+    ?>
+
+<?php
+            session_start();
+            if(!isset($_SESSION["usuario"])){
+                header("location:clientes/login.php");
+            }else{
+                echo "<p>Has iniciado con: " . $_SESSION["usuario"] . "</p>";
+            }
+            
+
         if($_SERVER["REQUEST_METHOD"] == "POST") {
             $nombre = $_POST["nombre"];
             $talla = $_POST["talla"];
