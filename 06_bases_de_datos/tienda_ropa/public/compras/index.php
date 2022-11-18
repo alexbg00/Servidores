@@ -13,10 +13,10 @@
 </head>
 
 <body>
+    <?php require "../sesion/control_de_acceso.php" ?>
     <?php require '../header.php' ?>
     <?php require '../../util/base_de_datos.php' ?>
 
-    <?php require "../sesion/control_de_acceso.php" ?>
 
 
 

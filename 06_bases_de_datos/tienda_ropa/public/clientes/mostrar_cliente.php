@@ -8,10 +8,10 @@
 </head>
 <body>
 <div class="container">
+    <?php require "../sesion/control_de_acceso.php" ?>
         <?php require '../../util/base_de_datos.php' ?>
         <?php require '../header.php' ?>
 
-        <?php require "../sesion/control_de_acceso.php" ?>
 
 
         <?php
@@ -36,7 +36,7 @@
         }
         ?>
 
-        <h1>Ver perfil de <?php echo $usuario?></h1>
+        <h1>Ver perfil de <?php echo $_SESSION["usuario"]?></h1>
         <div class="row">
             <div class="col-4">
                 <p>Usuario: <?php echo $usuario ?></p>
@@ -55,8 +55,7 @@
                 </form>
             </div>
             <div class="col-4">
-                <img witdh="200" height="300" src="../..<?php echo $imagen ?>">
-            </div>
+            <img src="../..<?php echo $imagen ?>" alt="avatar" width="70px" height="70px" style="border-radius:150px">            </div>
         </div>
     </div>
 

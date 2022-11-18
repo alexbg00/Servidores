@@ -7,10 +7,10 @@
     <title>Listado de clientes</title>
 </head>
 <body>
+    <?php require "../sesion/control_de_acceso.php" ?>
     <?php require '../header.php'?>
     <?php require "../../util/base_de_datos.php" ?>
 
-    <?php require "../sesion/control_de_acceso.php" ?>
 
 
 
@@ -35,10 +35,13 @@
 
                                 if ($resultado -> num_rows > 0) {
                                     while ($fila = $resultado -> fetch_assoc()) {
-                                        $imagen = $fila["imagen"];
+                                        $imagen = $fila["imagen"]; //  Ruta de la imagen 
+                                        echo  $imagen;
                                     }
-                                    unlink("../.." . $imagen);
+                                    if($imagen != "/resources/images/clientes/552721.jpg"){
+                                        unlink("../.." . $imagen);
                                 }
+                            }
 
                                 //  Consulta para borrar la prenda
                                 $sql = "DELETE FROM cliente WHERE id = '$id'";
@@ -75,14 +78,23 @@
                         while($fila = $resultado->fetch_assoc()){?>
                             <tr>
                                 <td>
-                                    <?php echo $fila["usuario"]; 
-                                    if($fila["usuario"] == "admin"){ 
+                                    <?php echo $fila["usuario"];
+                                        $rol_usuario=$fila["rol"];
+
+                                    if($rol_usuario == "administrador"){ 
                                         ?>
                                         <span class="badge text-bg-danger">ADMINISTRADOR</span>
                                         <!--  -->
                                     <?php
+                                    }else{ ?>
+                                        <span class="badge text-bg-info">Cliente</span>
+                                        <!--  -->
+                                    <?php
+
                                     }
-                                    /*mostrar en rojo si es menor a 1990  */
+
+                                    //fecha actual de hoy
+                                    
                                     if($fila["fecha_nacimiento"] >= date("Y-m-d", strtotime("10-11-2004"))){
                                         ?>
                                         <span class="badge text-bg-warning">MENOR DE EDAD</span>

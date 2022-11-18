@@ -41,8 +41,8 @@
         ) {
             //insertar en la carpeta clientes la imagen
             if (move_uploaded_file($file_temp_name, $path)) {
-                echo "<p>Fichero movido con éxito</p>";
-            } else {
+/*                 echo "<p>Fichero movido con éxito</p>";
+ */            } else {
                 echo "<p>No se ha podido mover el fichero</p>";
             }
                 ////////////////////////////
@@ -71,7 +71,7 @@
             }
         }else {
             /* meter una imagen por defecto si el campo imagen esta vacio */
-            $avatar = "/resources/images/clientes/552721.png";
+            $avatar = "/resources/images/clientes/552721.jpg";
 
             $segundo_apellido =
                 !empty($segundo_apellido) ? "'$segundo_apellido'" : "NULL";

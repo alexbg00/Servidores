@@ -9,8 +9,8 @@
 </head>
 <body>
     <?php
-    require '../../util/base_de_datos.php';
     require "../sesion/control_de_acceso.php";
+    require '../../util/base_de_datos.php';
 
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $id = $_GET["id"];

@@ -18,12 +18,13 @@
 
             <?php
             session_start();
+
+            echo "<p>Has iniciado con: " . $_SESSION["usuario"] . " como usuario o administrador</p>";
+
             if(isset($_SESSION["usuario"]) && $_SESSION["rol"] == "administrador"){
                 
                     echo "<p>Has iniciado con: " . $_SESSION["usuario"] . " como administrador</p>";
             
-            }if(isset($_SESSION["usuario"]) && $_SESSION["rol"] == "usuario"){
-                    echo "<p>Has iniciado con: " . $_SESSION["usuario"] . " como usuario</p>";
             }else{
                 header("location:login.php");
             }

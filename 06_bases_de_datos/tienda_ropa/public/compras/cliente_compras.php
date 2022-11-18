@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>Mis compras</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,15 +13,14 @@
 </head>
 
 <body>
+    <?php require "../sesion/control_de_acceso.php" ?>
     <?php require '../header.php' ?>
     <?php require '../../util/base_de_datos.php' ?>
     
-    <?php require "../sesion/control_de_acceso.php" ?>
-
-    
     <?php
-    if($_SERVER["REQUEST_METHOD"] == "GET"){
-        $usuario = $_GET['usuario'];
+    if ($_SERVER["REQUEST_METHOD"] == "GET") {
+        $usuario = $_GET["usuario"];
+        
     }
     ?>
     

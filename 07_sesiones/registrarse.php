@@ -58,8 +58,8 @@
                     <div class="form-group mb-3">
                         <label class="form-label">Tipo de usuario</label>
                         <select class="form-select" name="rol" aria-label="Default select example">
-                            <option value="usuario" selected>usuario</option>
-                            <option value="administrador">administrador</option>
+                            <option value="usuario" selected>Usuario</option>
+                            <option value="administrador">Administrador</option>
                         </select>
 
                     </div>

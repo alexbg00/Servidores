@@ -28,6 +28,9 @@
             $segundo_apellido = $_POST["apellido2"];
             $fecha_nacimiento = $_POST["fecha_nacimiento"];
             $contrasena = $_POST["contrasena"];
+            $rol = $_POST["rol"];
+
+            
 
             $hash_contrasena = password_hash($contrasena, PASSWORD_DEFAULT);
 
@@ -42,12 +45,12 @@
             if (
                 !empty($usuario) && !empty($nombre) &&
                 !empty($primer_apellido &&
-                    !empty($fecha_nacimiento) && !empty($file_name) && !empty($hash_contrasena))
+                    !empty($fecha_nacimiento) && !empty($file_name) && !empty($hash_contrasena) && !empty($rol))
             ) {
                 //insertar en la carpeta clientes la imagen
                 if (move_uploaded_file($file_temp_name, $path)) {
-                    echo "<p>Fichero movido con éxito</p>";
-                } else {
+/*                     echo "<p>Fichero movido con éxito</p>";
+ */                } else {
                     echo "<p>No se ha podido mover el fichero</p>";
                 }
                 ////////////////////////////
@@ -56,16 +59,17 @@
 
                 $avatar = "/resources/images/clientes/" . $file_name;
 
-                $sql = "INSERT INTO cliente (usuario, nombre,apellido_1, apellido_2,fecha_nacimiento,imagen,contrasena) 
-        VALUES ('$usuario', '$nombre','$primer_apellido', $segundo_apellido,'$fecha_nacimiento','$avatar','$hash_contrasena')";
+                $sql = "INSERT INTO cliente (usuario, nombre,apellido_1, apellido_2,fecha_nacimiento,imagen,contrasena,rol) 
+        VALUES ('$usuario', '$nombre','$primer_apellido', $segundo_apellido,'$fecha_nacimiento','$avatar','$hash_contrasena','$rol')";
 
                 if ($conexion->query($sql) == "TRUE") {
         ?>
                     <div class='alert alert-success alert-dismissible fade show'>
                         <strong>Correcto! <?php echo $file_name ?></strong><?php echo $correcto ?>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                    
                 <?php
+                header("Location: login.php");
                 } else {
                 ?>
                     <div class='alert alert-danger alert-dismissible fade show'>
@@ -81,16 +85,19 @@
                 $segundo_apellido =
                     !empty($segundo_apellido) ? "'$segundo_apellido'" : "NULL";
 
-                $sql = "INSERT INTO cliente (usuario, nombre,apellido_1, apellido_2,fecha_nacimiento,imagen,contrasena) 
-        VALUES ('$usuario', '$nombre','$primer_apellido', $segundo_apellido,'$fecha_nacimiento','$avatar','$hash_contrasena')";
+                $sql = "INSERT INTO cliente (usuario, nombre,apellido_1, apellido_2,fecha_nacimiento,imagen,contrasena,rol) 
+        VALUES ('$usuario', '$nombre','$primer_apellido', $segundo_apellido,'$fecha_nacimiento','$avatar','$hash_contrasena','$rol')";
 
                 if ($conexion->query($sql) == "TRUE") {
                 ?>
                     <div class='alert alert-success alert-dismissible fade show'>
-                        <strong>Correcto! <?php echo $file_name ?></strong>, se ha introducido un avatar por defecto  <?php echo $correcto ?>
+                        <strong>Correcto! <?php echo $file_name ?></strong>, se ha introducido un avatar por defecto <?php echo $correcto ?>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
+                    
                 <?php
+                    header("Location: ../sesion/login.php");
+
                 } else {
                 ?>
                     <div class='alert alert-danger alert-dismissible fade show'>
@@ -107,7 +114,7 @@
         ?>
 
         <h1>Registrate!</h1>
-        <a href="index.php" class="btn btn-primary disabled" style="margin:30px" >Listado clientes</a>
+        <a href="index.php" class="btn btn-primary disabled" style="margin:30px">Listado clientes</a>
         <form action="registro.php" method="POST" class="form-control mt-1" enctype="multipart/form-data">
             <label for="usuario">Usuario</label>
             <input type="text" name="usuario" id="usuario" class="form-control">
@@ -119,6 +126,13 @@
             <input type="text" name="apellido1" id="apellidos1" class="form-control"><br>
             <label for="apellido2">Segundo Apellido</label>
             <input type="text" name="apellido2" id="apellidos2" class="form-control"><br>
+            
+            <label for="rol1">Rol del usuario</label>
+            <select class="form-select" name="rol" aria-label="Default select example">
+                <option value="cliente" selected >Cliente</option>
+                <option value="administrador">Administrador</option>
+            </select><br>
+            
             <label for="fecha_nacimiento">Fecha de Nacimiento</label>
             <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control"><br>
             <label for="imagen">Avatar</label>

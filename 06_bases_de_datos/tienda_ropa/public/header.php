@@ -10,7 +10,6 @@
 </head>
 
 <body>
-    
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
@@ -20,33 +19,56 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
+
+                        <?php 
+                        if($_SESSION["rol"] == "administrador"){
+                        ?>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/tienda_ropa/public/index.php">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/tienda_ropa/public/prendas/insertar_prenda.php">Nueva prenda</a>
                         </li>
-                        <li class="nav-item">
+<!--                         <li class="nav-item">
                             <a class="nav-link" href="/tienda_ropa/public/clientes/insertar_cliente.php">Crear cliente</a>
+                        </li> -->
+                        <li class="nav-item">                        
+                            <a class="nav-link" href="/tienda_ropa/public/clientes/index.php" >Listado clientes</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" href="/tienda_ropa/public/compras/">Compras</a>
+                            <a class="nav-link"  href="/tienda_ropa/public/compras/">Compras</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" href="/tienda_ropa/public/compras/cliente_compras.php">Nueva Compra</a>
+                            <a class="nav-link" href="/tienda_ropa/public/sesion/cerrar_sesion.php">Desconectar</a>
                         </li>
+                        <?php } ?>
+                        
+                        <?php 
+                        if($_SESSION["rol"] == "cliente"){
+                        ?>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/tienda_ropa/public/compras/cliente_compras.php?usuario=<?php echo $_SESSION['usuario'] ?>">Mis Compra</a>
+                        </li>
+
+                        
+
                         <li class="nav-item">
                             <a class="nav-link" href="/tienda_ropa/public/compras/comprar_prendas.php">Comprar prenda</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" href="/tienda_ropa/public/clientes/registro.php">Registrarse</a>
+                            <a class="nav-link "  href="/tienda_ropa/public/sesion/cerrar_sesion.php">Desconectar</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/tienda_ropa/public/clientes/login.php">Iniciar Sesion</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/tienda_ropa/public/clientes/cerrar_sesion.php">Desconectar</a>
-                        </li>
+                        <?php 
+                    
+                        } ?>
+                        
+                        
+                        <a class="nav-link" href="">Bienvenid@ <?php echo $_SESSION["usuario"] ?></a>
 
 
 

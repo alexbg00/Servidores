@@ -11,21 +11,16 @@
 
 <body>
     <div class="container">
+        <?php require 'sesion/control_de_acceso.php' ?>
         <?php require 'header.php' ?>
         <?php require '../util/base_de_datos.php' ?>
         <br>
         <h1>Bienvenido a nuestra tienda</h1>
-        <?php
-            session_start();
-            if(!isset($_SESSION["usuario"])){
-                header("location:clientes/login.php");
-            }else{
-                echo "<p>Has iniciado con: " . $_SESSION["usuario"] . "</p>";
-            }
-            ?>
-
+        <div class="text-center">
+            <img src="/tienda_ropa/resources/images/clientes/inicio.jpg" alt="tienda" width="60%">
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
+    </div>
 </body>
 
 

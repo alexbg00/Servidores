@@ -13,9 +13,9 @@
 </head>
 
 <body>
+    <?php require "../sesion/control_de_acceso.php" ?>
     <?php require "../header.php"; ?>
     <?php require "../../util/base_de_datos.php"; ?>
-    <?php require "../sesion/control_de_acceso.php" ?>
 
 
     <div class="container">
@@ -25,8 +25,22 @@
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $prenda_id = $_POST['prenda'];
             $cantidad = $_POST['cantidad'];
-            $cliente_id = 88;
+            //$cliente_id = 88;
             $fecha = date("Y-m-d H:i:s");
+            
+            //obtener el cliente_id del usuario que ha iniciado sesión
+            $usuario = $_SESSION["usuario"];
+
+            $sql = "SELECT * FROM cliente WHERE usuario = '$usuario'";
+            $resultado = $conexion->query($sql);
+
+            if($resultado->num_rows > 0){
+                while($fila = $resultado->fetch_assoc()){
+                    $cliente_id = $fila["id"];
+                }
+            }
+            ////////////////////////////////////////////
+            
 
             echo "ID prenda: $prenda_id <br>";
             echo "Cantidad: $cantidad <br>";
