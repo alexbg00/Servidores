@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Videojuego;
-use App\Models\videojuegos;
+use App\Models\Compania;
 use Illuminate\Http\Request;
 
-class videojuegoController extends Controller
+class CompaniasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,15 +14,13 @@ class videojuegoController extends Controller
      */
     public function index()
     {
+        $compania = Compania::all();
 
-        $videojuegos = Videojuego::all();
-        
 
-        $mensaje = 'Listado de videojuegos';
 
-        return view('videojuegos/index', [
-            'videojuegos' => $videojuegos,
-            'mensaje' => $mensaje
+
+        return view('companias/index',[
+            'companias' => $compania
         ]);
     }
 
@@ -34,7 +31,8 @@ class videojuegoController extends Controller
      */
     public function create()
     {
-        return view('videojuegos/create');
+
+        return view('companias/create');
     }
 
     /**
@@ -45,15 +43,17 @@ class videojuegoController extends Controller
      */
     public function store(Request $request)
     {
-        $videojuego = new Videojuego;
-        $videojuego -> titulo = $request -> input('titulo');
-        $videojuego -> precio = $request -> input('precio');
-        $videojuego -> pegi = $request -> input('pegi');
-        $videojuego -> descripcion = $request -> input('descripcion');
-        $videojuego -> save();
-
-        return redirect('videojuegos');
         
+        $compania = new Compania;
+        $compania -> nombre = $request -> input('nombre');
+        $compania -> sede = $request -> input('sede');
+        $compania -> fecha_fundacion = $request -> input('fecha_fundacion');
+
+        $compania -> save();
+
+        return redirect ('companias');
+
+
     }
 
     /**

@@ -14,8 +14,8 @@
 
 <body>
     <div class="container">
-        <h1>Index</h1>
-        <p>{{ $mensaje }}</p>
+        @include('header')
+        <h1>{{ $mensaje }}</h1>
         <div class="row">
             <div class="col-9">
                 <table class='table table-success table-striped table-hover'>
@@ -36,11 +36,12 @@
                                 <td> {{ $videojuego['pegi']  }}</td>
                                 <td> {{ $videojuego['descripcion'] }} </td>
                             </tr>
-                        
                         @endforeach
                         
                     </tbody>
                 </table>
+                <a class="btn btn-info" href="{{ route('videojuegos.create') }}">Nuevo Videojuego</a>
+                
             </div>
         </div>
     </div>

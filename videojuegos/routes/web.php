@@ -3,6 +3,8 @@
 use App\Http\Controllers\ConsolasController;
 use App\Http\Controllers\videojuegoController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CompaniasController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,13 +20,15 @@ Route::get('/consolas',
 Route::get('/consolas/create',
     [ConsolasController::class, 'create']);
 
-Route::get('/videojuegos',[
+/* Route::get('/videojuegos',[
     videojuegoController::class,'index']);
 
 Route::get('/videojuegos/create',[
-    videojuegoController::class,'create']);
+    videojuegoController::class,'create']); */
     
 Route::resource('videojuegos', videojuegoController::class);
+
+Route::resource('companias', CompaniasController::class);
 
 
 

@@ -14,11 +14,13 @@
 
 <body>
     <div class="container">
+        @include('header')
         <h1>Crear Videojuego</h1>
         <form action="{{ route('videojuegos.store') }}" method="POST">
+            @csrf
             <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" name="nombre">
+                <label for="titulo" class="form-label">Titulo</label>
+                <input type="text" class="form-control" name="titulo">
             </div>
             <div class="mb-3">
                 <label for="pegi" class="form-label">Pegi</label>
@@ -40,7 +42,8 @@
                 <textarea class="form-control" name="descripcion" rows="3"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Crear</button>
-            <a href="" class="btn btn-dark">Atras</a>
+
+            <a href="{{ route('videojuegos.index') }}" class="btn btn-dark">Atras</a>
         </form>
     </div>
 
