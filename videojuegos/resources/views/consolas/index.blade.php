@@ -16,12 +16,13 @@
     <div class="container">
         <h1>Index</h1>
 
-        <?php
-        echo $mensaje;
-        foreach($consolas as $consola){
-            echo "<li>$consola</li>";
-        }
-        ?>
+        
+        {{ $mensaje }}
+    </br>
+        @foreach($consolas as $consola)
+            <li>{{ $consola }}</li>
+        @endforeach
+        
     </div>    
 
 

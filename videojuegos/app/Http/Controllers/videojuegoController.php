@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Videojuego;
+use App\Models\videojuegos;
 use Illuminate\Http\Request;
 
 class videojuegoController extends Controller
@@ -14,16 +16,21 @@ class videojuegoController extends Controller
     public function index()
     {
         
-        $videojuegos = [
+/*         $videojuegos = [
             ['titulo' => 'GTA V', 'precio' => 60, 'pegi' => 18, 'descripcion' => 'GTA V es un videojuego de acción-aventura de mundo abierto desarrollado por Rockstar North y publicado por Rockstar Games.'],
-            ['titulo' => 'FIFA 21', 'precio' => 60, 'pegi' => 3, 'descripcion' => 'FIFA 21 es un videojuego de fútbol desarrollado por EA Vancouver y EA Salt Lake City y publicado por Electronic Arts.'],
-            ['titulo' => 'Minecraft', 'precio' => 20, 'pegi' => 7, 'descripcion' => 'Minecraft es un videojuego de construcción, de tipo «mundo abierto» o «sandbox» creado originalmente por el sueco Markus Persson (conocido como «Notch») y posteriormente desarrollado y publicado por Mojang.'],
+            ['titulo' => 'FIFA 22', 'precio' => 65, 'pegi' => 3, 'descripcion' => 'FIFA 22 es un videojuego de fútbol desarrollado por EA Vancouver y EA Salt Lake City y publicado por Electronic Arts.'],
             ['titulo' => 'Call of Duty: Black Ops Cold War', 'precio' => 60, 'pegi' => 18, 'descripcion' => 'Call of Duty: Black Ops Cold War es un videojuego de disparos en primera persona desarrollado por Treyarch y Raven Software y publicado por Activision.'],
             ['titulo' => 'FIFA 21', 'precio' => 60, 'pegi' => 3, 'descripcion' => 'FIFA 21 es un videojuego de fútbol desarrollado por EA Vancouver y EA Salt Lake City y publicado por Electronic Arts.'],
             ['titulo' => 'Minecraft', 'precio' => 20, 'pegi' => 7, 'descripcion' => 'Minecraft es un videojuego de construcción, de tipo «mundo abierto» o «sandbox» creado originalmente por el sueco Markus Persson (conocido como «Notch») y posteriormente desarrollado y publicado por Mojang.']
-        ];        
+        ];        */
+        $videojuegos = Videojuego::all();
+        
+
+        $mensaje = 'Listado de videojuegos';
+
         return view('videojuegos/index', [
             'videojuegos' => $videojuegos,
+            'mensaje' => $mensaje
         ]);
     }
 
@@ -45,7 +52,7 @@ class videojuegoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

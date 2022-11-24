@@ -15,20 +15,20 @@
 <body>
     <div class="container">
         <h1>Crear Videojuego</h1>
-        <form action="">
+        <form action="{{ route('videojuegos.store') }}" method="POST">
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" class="form-control" name="nombre">
             </div>
             <div class="mb-3">
                 <label for="pegi" class="form-label">Pegi</label>
-                <select class="form-select" aria-label="Default select example" name="pegi">
+                <select class="form-select" name="pegi">
                     <option selected>Selecciona Pegi</option>
-                    <option value="3">3</option>
-                    <option value="7">7</option>
-                    <option value="12">12</option>
-                    <option value="16">16</option>
-                    <option value="18">18</option>
+                    <option value="3">PEGI 3</option>
+                    <option value="7">PEGI 7</option>
+                    <option value="12">PEGI 12</option>
+                    <option value="16">PEGI 16</option>
+                    <option value="18">PEGI 18</option>
                 </select>
             </div>
             <div class="mb-3">
@@ -39,6 +39,8 @@
                 <label for="descripcion" class="form-label">Descripción</label>
                 <textarea class="form-control" name="descripcion" rows="3"></textarea>
             </div>
+            <button type="submit" class="btn btn-primary">Crear</button>
+            <a href="" class="btn btn-dark">Atras</a>
         </form>
     </div>
 
