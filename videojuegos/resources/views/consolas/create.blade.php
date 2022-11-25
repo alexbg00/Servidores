@@ -15,6 +15,31 @@
 <body>
     <div class="container">
         <h1>Nueva consola</h1>
+        <div class="row">
+            <div class="col-9">
+                <form method="post" action={{ route('consolas.store') }}>
+                @csrf
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="año_de_lanzamiento" class="form-label">Año de lanzamiento</label>
+                        <input type="number" class="form-control" name="año_de_salida">
+                    </div>
+                    <div class="mb-3">
+                        <label for="fabricante" class="form-label">Generacion</label>
+                        <input type="text" class="form-control" id="fabricante" name="fabricante">
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripcion</label>
+                        <textarea type="textarea" class="form-control" id="descripcion" name="descripcion">
+                        </textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Crear</button>
+                </form>
+            </div>
+        </div>
     </div>    
 
 

@@ -23,10 +23,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="#">Incio</a>
+                    <a class="nav-link active" aria-current="page" href="/">Incio</a>
                     <a class="nav-link" href="{{ route('videojuegos.index') }}">Videojuegos</a>
                     <a class="nav-link" href="{{ route('companias.index') }}">Compañias</a>
-                    <a class="nav-link" href="#">Plataformas</a>
+                    <a class="nav-link" href="{{ route('consolas.index') }}">Consolas</a>
                 </div>
             </div>
         </div>

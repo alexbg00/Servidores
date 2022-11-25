@@ -14,14 +14,44 @@
 
 <body>
     <div class="container">
+        @include('header')
         <h1>Index</h1>
 
-        
-        {{ $mensaje }}
     </br>
-        @foreach($consolas as $consola)
-            <li>{{ $consola }}</li>
+    <table class="table table-primary table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Año de lanzamiento</th>
+            <th>Fabricante</th>
+            <th>Descripcion</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach ($consolas as $consola)
+        <tr>
+            <td>{{ $consola['nombre'] }}</td>
+            <td>{{ $consola['año_de_salida'] }}</td>
+            <td>{{ $consola['fabricante'] }}</td>
+            <td>{{ $consola['descripcion']}}</td>
+            <td>
+                <form action="{{ route('consolas.show',['consola' => $consola -> id]) }}" method="GET">
+                    <button class="btn btn-primary" type="submit">Ver</button>
+                </form>
+            </td>
+            <td>
+                <form action={{ route('consolas.destroy',['consola' => $consola -> id]) }} method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger" type="submit">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
         @endforeach
+    </table>
+    <a href="{{ route('consolas.create') }}" class="btn btn-primary">Crear consola</a>
         
     </div>    
 

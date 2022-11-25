@@ -25,6 +25,9 @@
                             <th>Precio</th>
                             <th>pegi</th>
                             <th>Descripción</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,6 +38,23 @@
                                 <td> {{ $videojuego['precio'] }}</td>
                                 <td> {{ $videojuego['pegi']  }}</td>
                                 <td> {{ $videojuego['descripcion'] }} </td>
+                                <td>
+                                    <form method="GET" action="{{ route('videojuegos.show',['videojuego' => $videojuego -> id]) }}">
+                                        <button class="btn btn-primary" type="submit">Ver</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form method="POST" action="{{ route('videojuegos.destroy' , ['videojuego' => $videojuego -> id]) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger" type="submit">Borrar</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form method="GET" action="{{ route('videojuegos.edit' , ['videojuego' => $videojuego -> id]) }}">
+                                        <button class="btn btn-warning" type="submit" >Editar</button>
+                                    </form>
+                                    </td>
                             </tr>
                         @endforeach
                         

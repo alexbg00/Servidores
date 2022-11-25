@@ -17,15 +17,16 @@
 
     <div class="container">
         @include('header')
-        <h1>Comapañia</h1>
+        <h1>Compañia</h1>
         <div class="row">
             <div class="col-9">
-                <table class='table table-success table-striped table-hover'>
+                <table class='table table-warning table-striped table-hover'>
                     <thead>
                         <tr>
                             <th>Nombre</th>
                             <th>País</th>
                             <th>Descripción</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,6 +35,18 @@
                                 <td> {{ $compania['nombre'] }} </td>
                                 <td> {{ $compania['sede'] }}</td>
                                 <td> {{ $compania['fecha_fundacion'] }} </td>
+                                <td>
+                                    <form action="{{ route('companias.show', ['compania' => $compania-> id]) }}" method="get">
+                                        <button class="btn btn-primary" type="submit">Ver</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="{{ route('companias.destroy', ['compania'=> $compania -> id]) }}" method="post">
+                                    @csrf
+                                    @method('DELETE');
+                                    <button class="btn btn-danger" type="submit">Eliminar</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -13,7 +13,8 @@
     </head>
     <body>
         <div class="container">
-            <h1>Hola Mundo</h1>
+        @include('header')
+            <h1>Página principal</h1>
         </div>
 
 

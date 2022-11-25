@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Compania;
 use Illuminate\Http\Request;
+use DB;
 
 class CompaniasController extends Controller
 {
@@ -16,9 +17,7 @@ class CompaniasController extends Controller
     {
         $compania = Compania::all();
 
-
-
-
+        
         return view('companias/index',[
             'companias' => $compania
         ]);
@@ -64,7 +63,11 @@ class CompaniasController extends Controller
      */
     public function show($id)
     {
-        //
+        //nos proporciona la id
+        $compania = Compania::find($id);
+
+        //nos proporciona el nombre de la compañia que hemos seleccionado con la id
+        return view('companias/show',['compania' => $compania]);
     }
 
     /**
@@ -98,6 +101,8 @@ class CompaniasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('companias') -> where('id','=',$id) -> delete();
+
+        return redirect('compania');
     }
 }

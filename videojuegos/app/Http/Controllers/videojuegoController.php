@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Videojuego;
-use App\Models\videojuegos;
+use DB;
 use Illuminate\Http\Request;
 
 class videojuegoController extends Controller
@@ -64,7 +64,12 @@ class videojuegoController extends Controller
      */
     public function show($id)
     {
-        //
+        $videojuego = Videojuego::find($id);
+        
+        return view('videojuegos/show',[
+            'videojuego' => $videojuego
+            
+        ]);
     }
 
     /**
@@ -75,7 +80,12 @@ class videojuegoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $videojuego = Videojuego::find($id);
+        return view('videojuegos/edit',[
+            'videojuego' => $videojuego
+        ]);
+
+        
     }
 
     /**
@@ -98,6 +108,9 @@ class videojuegoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('videojuegos')->where('id','=', $id )->delete();
+
+        return redirect('videojuegos');
+
     }
 }
