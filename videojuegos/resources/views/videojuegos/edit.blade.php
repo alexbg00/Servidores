@@ -31,7 +31,14 @@
                     </div>
                     <div class="mb-3">
                         <label for="pegi" class="form-label">Pegi</label>
-                        <input type="text" class="form-control" id="pegi" name="pegi" value="{{ $videojuego -> pegi }}">
+                        <select class="form-select" name="pegi">
+                            <option selected>Selecciona Pegi</option>
+                            <option value="3">PEGI 3</option>
+                            <option value="7">PEGI 7</option>
+                            <option value="12">PEGI 12</option>
+                            <option value="16">PEGI 16</option>
+                            <option value="18">PEGI 18</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="descripcion" class="form-label">Descripción</label>
@@ -39,7 +46,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Actualizar</button>
                     <a class="btn btn-light ml-3" type="submit" href="{{ route('videojuegos.index') }}">Volver</a>
-
+                    
                 </form>
 
             </div>
