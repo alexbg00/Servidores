@@ -24,19 +24,19 @@
 
 
         if (empty($temp_dni)) {
-            $error_dni = "El DNI es obligatorio";
+            $error_dni = "El campo DNI es obligatorio";
         } else {
             $pattern = "/^[0-9]{8}[a-zA-Z]$/";
 
 
-        if (!preg_match($pattern, $temp_dni)) {
-                $error_dni = "El dni debe de tener 8 dígitos y una letra ";
+            if (!preg_match($pattern, $temp_dni)) {
+                $error_dni = "El dni debe de tener 8 dígitos y un carácter ";
             } else {
-                $temp_dni = substr($temp_dni, 0, -1);
                 $letras = strtoupper(substr($temp_dni, -1));
+                $temp_dni = substr($temp_dni, 0, -1);
                 if (substr("TRWAGMYFPDXBNJZSQVHLCKE", $temp_dni % 23, 1) == $letras && strlen($letras) == 1 &&  strlen($temp_dni) == 8) {
                     $dni = $temp_dni;
-                    echo "<p>$dni</p>";
+                    echo "<p>dni correcto</p>";
                 } else {
                     $error_dni = "El dni debe de tener 8 dígitos y un carácter";
                 }
@@ -147,7 +147,7 @@
     <!-- MAQUETA DEL FORMULARIO DNI, NOMBRE, PRIMER Y SEGUNDO APELLIDO,EDAD ,EMAIL -->
     <div class = "container">
     <div class="formulario">
-        <form action="" method="POST" class="mb-3>
+        <form action="" method="POST" class="mb-3">
 
             <label for="dni" class="form-label">DNI</label><br>
             <input type="text" name="dni">

@@ -60,6 +60,7 @@
         </form>
     </div>
     
+    
     <?php
     function validar_dni($dni){
         
@@ -69,7 +70,12 @@
         $numeros = substr($dni, 0, -1);
         if ( substr("TRWAGMYFPDXBNJZSQVHLCKE", $numeros%23, 1) == $letra && strlen($letra) == 1 && strlen ($numeros) == 8 ){
             echo 'DNI valido:'.$dni;
-        }else{
+        }
+        if(!isset($dni)){
+            echo "El campo no puede estar vacio";
+        
+        }
+        else{
             echo 'DNI no valido: '.$dni . "  --> EJEMPLO: 12345678A";
         }
     }
@@ -77,6 +83,9 @@
     validar_dni($_POST['dni']);
 
     ?>
+    
+
+
 
     <div class ="parte3">
         <!-- mostrar las tablas de multiplicar del 1 al 10 -->

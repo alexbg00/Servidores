@@ -16,17 +16,15 @@
 <body>
     <div class="container">
         @include('header')
-        <h1>{{ $mensaje }}</h1>
-        <form method="GET" action="{{ route('videojuegos.search') }}">
+        <h1>Busqueda de videojuegos</h1>
         <div class="row">
             <div class="col-4">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" name="titulo" placeholder="Busca tu Videojuego">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">Buscar</button>
-                </div>
-        </div>
-    </form>
+                    </div>
 
+            </div>
             <div class="col-12">
                 <table class='table table-success table-striped table-hover'>
                     <thead>
@@ -45,9 +43,9 @@
                         @foreach ($videojuegos as $videojuego)
                         <tr>
                             <td>{{ $videojuego -> titulo }}</td>
-                            <td>{{ $videojuego -> precio }}</td>
-                            <td>{{ $videojuego -> pegi }}</td>
-                            <td>{{ $videojuego -> descripcion }}</td>
+                                <td>{{ $videojuego -> precio }}</td>
+                                <td>{{ $videojuego -> pegi }}</td>
+                                <td>{{ $videojuego -> descripcion }}</td>
                             <td>
                                 <form method="GET"
                                     action="{{ route('videojuegos.show',['videojuego' => $videojuego -> id]) }}">

@@ -123,14 +123,17 @@ class videojuegoController extends Controller
 
     }
 
-/*     public function search(Request $request)
+    /*
+        Busca todos los videojuegos que contenga la palabra introducida por el buscador
+        @param String $titulo
+    */
+    public function search(Request $request)
     {
-        $search = $request -> input('search');
-        $videojuegos = DB::table('videojuegos')->where('titulo', 'like', '%'.$search.'%')->get();
+        $titulo = $request -> input('titulo');
+        $videojuegos = DB::table('videojuegos')->where('titulo', 'like', '%'.$titulo.'%')->get();
 
-        return view('videojuegos/index', [
-            'videojuegos' => $videojuegos,
-            'mensaje' => 'Resultados de la búsqueda'
+        return view('videojuegos/search', [
+            'videojuegos' => $videojuegos
         ]);
-    } */
+    }
 }

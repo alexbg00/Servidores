@@ -14,7 +14,14 @@
 </head>
 
 <body>
-    
+    <h1>Productos</h1>
+    <ul>
+    @foreach ($productos as $producto)
+        <li>
+            {{ $producto->nombre }} - Categoria: {{ $producto->categoria->nombre }}
+        </li>
+    @endforeach
+    </ul>
 
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

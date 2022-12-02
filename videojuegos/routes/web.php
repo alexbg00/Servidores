@@ -10,21 +10,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/* Route::get('/consolas/info', function () {
-    return view('consolas/info');
-});
-
-Route::get('/consolas',
-    [ConsolasController::class, 'index']);
-
-Route::get('/consolas/create',
-    [ConsolasController::class, 'create']); */
-
-/* Route::get('/videojuegos',[
-    videojuegoController::class,'index']);
-
-Route::get('/videojuegos/create',[
-    videojuegoController::class,'create']); */
+Route::get('/videojuegos/search', [videojuegoController::class, 'search']) -> name('videojuegos.search');
     
 Route::resource('videojuegos', videojuegoController::class);
 
